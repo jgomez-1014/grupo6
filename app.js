@@ -9,7 +9,7 @@ const path = require('path');
 
 
 //Conectamos la app a una Base de Datos
-/* const conexion = mysql.createConnection({
+const conexion = mysql.createConnection({
     host: process.env.HOST,
     user: process.env.USER,
     password: process.env.PASSWORD,
@@ -23,7 +23,7 @@ const conectar = (conexion.connect((error) => {
         console.log('Base de Datos Conectada!!');
     })
 );
- */
+
 
 // Configuración de Middelwares
 app.use(express.json());
@@ -44,7 +44,7 @@ app.use(express.urlencoded({extended: false}));
 
 const generoRouter = require('./routes/generoRoutes');
 var indexRouter = require('./routes/index');
-const mimusicaRouter = require('./routes/mimusicaRoutes');
+const mimusicaRouter = require('./routes/rankingRoutes');
 
 /* 
 app.get('/', (req, res) => {
@@ -65,4 +65,5 @@ app.listen(Port, ()=>{
 app.on('error', (error) =>{
     console.log(`Tenemos un error ${error}`);
 });
+
 
