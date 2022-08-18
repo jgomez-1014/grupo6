@@ -1,63 +1,49 @@
+/* Librerias */
 const express = require('express');
 const app = express();
-require('dotenv').config();
-const Port = process.env.PORT || 8080;
 const hbs = require('hbs');
-const mysql = require('mysql2');
 const path = require('path');
-
-
-
-//Conectamos la app a una Base de Datos
-const conexion = mysql.createConnection({
-    host: process.env.HOST,
-    user: process.env.USER,
-    password: process.env.PASSWORD,
-    port: process.env.PORTDB,
-    database: process.env.DATABASE,
-});
-
-//Conectamos la DB
-const conectar = (conexion.connect((error) => {
-        if (error) throw error;
-        console.log('Base de Datos Conectada!!');
-    })
-);
-
+const dotenv = require('dotenv').config();
+const bodyParser = require('body-parser');
+const Port = process.env.PORT || 8080;
 
 // Configuración de Middelwares
 app.use(express.json());
-//app.use(express.static(path.join(__dirname, "public")));
-app.use(express.urlencoded({extended: false}));
-//Configuramos la Vista de la Aplicación
+app.use(express.static(path.join(__dirname, "public")));
+app.use(express.urlencoded({ extended: true }));
+
+// Configuración de la Vista de la Aplicación
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 hbs.registerPartials(path.join(__dirname, 'views/partials'));
 
+//Variables de rutas
+const indexRouter = require('./routes/indexRouter');
+const indexRouterApodo = require('./routes/indexRouter');
 
-// Configuración de Middelwares
-app.use(express.json());
-app.use(express.static(path.join(__dirname + "/public")));
-app.use(express.urlencoded({extended: false}));
+const agregarRouter= require('./routes/agregarRouter');
+const agregarRouterCancion= require('./routes/agregarRouter');
 
-//Variables de la rutas
+const milistaRouter= require('./routes/milistaRouter');
+const milistaBorrarRouter= require('./routes/milistaRouter');
 
-const generoRouter = require('./routes/generoRoutes');
-var indexRouter = require('./routes/index');
-const mimusicaRouter = require('./routes/rankingRoutes');
+
+//Routers
+app.use('/', indexRouter);
+app.post('/Apodo', indexRouterApodo);
+
+app.use('/agregar', agregarRouter);
+app.post('/cancion', agregarRouterCancion);
+
+app.use('/mimusica', milistaRouter);
+app.post('/borrar', milistaBorrarRouter);
 
 /* 
-app.get('/', (req, res) => {
-    res.send(`Este es nuestro TP`)
-}); */
-
-app.use('/', indexRouter);
+const generoRouter = require('./routes/generoRoutes');
+const mimusicaRouter = require('./routes/rankingRoutes');
 
 app.use('/generoRoutes', generoRouter);
-
-app.use('/mimusicaRoutes', mimusicaRouter);
-
-
+app.use('/mimusicaRoutes', mimusicaRouter); */
 
 app.listen(Port, ()=>{
     console.log(`Servidor corriendo en el Puerto ${Port}`);

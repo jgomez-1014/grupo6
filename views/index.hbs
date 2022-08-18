@@ -1,53 +1,30 @@
-    <section class="home2">
-        <section class="home_container container">
-            <h1 class="home_title">Bienvenidos al mejor blog de Musica</h1>
-            <p class="home_paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates veritatis
-                consectetur aliquam harum sapiente recusandae non eligendi delectus numquam quasi. Nisi quae dignissimos
-                odit, temporibus fugit soluta ipsa similique suscipit.</p>
+{{!-- Mensaje de Bienvenida --}}
+<section class="home2">
+    <section class="home_container container">
+    <h1 class="home_title">¡Hola! Soy una web de Musica</h1>
+    <p class="home_paragraph">Lorem ipsum dolor sit amet consectetur adipisicing
+        elit. Voluptates veritatis consectetur aliquam harum sapiente recusandae
+        non eligendi delectus numquam quasi. Nisi quae dignissimos odit,
+        temporibus fugit soluta ipsa similique suscipit.</p>
+    </section>
+</section>
 
-            <a href="#tips_main" class="btn">!Musicalizate!</a>
-            
+{{!-- Sexxion principal del Home - Ingresa Apodo --}}
+<main>
+    <section class="container tips">
+        <h2 class="title">Por favor ingresa tu Nuevo Apodo, pero solo si es nuevo o me rompo 😭 </h2>
+        <div class="promos_table">
+                <form class="contacto_form" action="/Apodo" method="post">
+                <div class="contacto_input_div">
+                    <label for="Apodo" class="contacto_label">Tu nuevo Apodo es: </label>
+                    <input type="text" placeholder="..." id="Apodo" name="Apodo" class="contacto_input">
+                </div>
+                <button type="submit" class="contacto_btn" target="blank" >Enviar</button>                
+            </form>
+            <h3 class="contacto_validacion">{{validacion}}
+            </h3>
         </section>
-        </section>
-    
-
-    <!-- Sección Principal del Home -->
-    <main>
-        <!-- Consejos - Home -->
-        <section class="container tips">
-
-            <!-- Titulo Consejos - Home -->
-            <h2 class="title">Bienvenidos a mi pagina web de Musica</h2>
-
-            <!-- Grilla Consejos - Home -->
-            <div class="tips_main">
-
-                <article class="tips_icons">
-                    <img src="/img/iconolist.svg" alt="" class="tips_icon_svg">
-                    <!-- tips_subtitle=about_title -->
-                    <h3 class="tips_subtitle">Crea Listas</h3>
-                    <p class="tips_paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt repellat
-                        culpa iste odit reiciendis explicabo dolore dolor asperiores similique odit reiciendis explicabo
-                        dolore dolor asperiores similique.</p>
-                </article>
-
-                <article class="tips_icons">
-                    <img src="/img/iconomusic.svg" alt="" class="tips_icon_svg">
-                    <h3 class="tips_subtitle">Recomienda Musica</h3>
-                    <p class="tips_paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt repellat
-                        culpa iste odit reiciendis explicabo dolore dolor asperiores similique odit reiciendis explicabo
-                        dolore dolor asperiores similique.</p>
-                </article>
-
-                <article class="tips_icons">
-                    <img src="/img/iconosusc.svg" alt="" class="tips_icon_svg">
-                    <h3 class="tips_subtitle">Suscribete</h3>
-                    <p class="tips_paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt repellat
-                        culpa iste odit reiciendis explicabo dolore dolor asperiores similique odit reiciendis explicabo
-                        dolore dolor asperiores similique.</p>
-                </article>
-
             </div>
-
-        </section>
-        </main>
+        </div>
+    </div>
+</main>
